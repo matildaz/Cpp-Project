@@ -3,3 +3,5 @@
 3	4376	6445111066767703	external/doctest/CMakeFiles/doctest.dir/doctest.cpp.obj	32b93acef11fd396
 1279	2465	6445111045604329	testlib.exe	d297b3fcf5488e48
 4377	4454	6445111067386056	external/doctest/doctest.lib	353e17e8ceac7478
+0	909	6445360702860106	CMakeFiles/testlib.dir/the_game/theGame.cpp.obj	5cafaf359c057a5c
+912	1263	6445360706006078	testlib.exe	b54e5a73d933a7c8

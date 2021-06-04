@@ -1,10 +1,32 @@
 #include "mobs.hpp"
 #include <SFML/Graphics.hpp>
 
+auto textureSprite(sf::RenderWindow window) {
+    sf::Texture texture;
+    texture.loadFromFile("\sprites\minotaur_1\Minotaur_01_Taunt_000.png");
+    sf::Sprite  sprite;
+    sprite.setTexture(texture);
+    sprite.setPosition(200, 100);
+    window.draw(sprite);
+}
+
+bool cursorPosition(sf::Vector2i position) {
+    if ((position.x >= 200) && (position.x <= 600)) {
+        if (position.y >= 100 && position.y <= 400)
+            return true;
+    }
+}
+
 int main()
 {
     // create the window
-    sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
+    sf::RenderWindow window(sf::VideoMode(800, 1000), "My window");
+
+    sf::Texture texture;
+    texture.loadFromFile("sprites/minotaur_1/Minotaur_01_Taunt_000.png");
+    sf::Sprite sprite;
+    sprite.setTexture(texture);
+    sprite.setPosition(0, 0);
 
     // run the program as long as the window is open
     while (window.isOpen())
@@ -16,17 +38,22 @@ int main()
             // "close requested" event: we close the window
             if (event.type == sf::Event::Closed)
                 window.close();
+
+            sf::Cursor cursor;
+            if (cursor.loadFromSystem(sf::Cursor::Hand))
+                window.setMouseCursor(cursor);
+
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                sf::Vector2i position = sf::Mouse::getPosition();
+                if (cursorPosition(position) == true)
+                    continue;
+            }
         }
 
-        sf::Cursor cursor;
-        if (cursor.loadFromSystem(sf::Cursor::Hand))
-            window.setMouseCursor(cursor);
+    window.draw(sprite);
 
-        // clear the window with black color
-        window.clear(sf::Color::Blue);
-
-        // end the current frame
-        window.display();
+    // end the current frame
+    window.display();
     }
 
     return 0;

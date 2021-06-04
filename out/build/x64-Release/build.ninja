@@ -43,7 +43,7 @@ include CMakeFiles\rules.ninja
 
 build cmake_object_order_depends_target_testlib: phony || CMakeFiles\testlib.dir
 
-build CMakeFiles\testlib.dir\the_game\mobs.cpp.obj: CXX_COMPILER__testlib_RelWithDebInfo ..\..\..\the_game\mobs.cpp || cmake_object_order_depends_target_testlib
+build CMakeFiles\testlib.dir\the_game\theGame.cpp.obj: CXX_COMPILER__testlib_RelWithDebInfo ..\..\..\the_game\theGame.cpp || cmake_object_order_depends_target_testlib
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /Zi /O2 /Ob1 /DNDEBUG
   INCLUDES = -IC:\Users\asis\Desktop\SFML-2.5.1\include
   OBJECT_DIR = CMakeFiles\testlib.dir
@@ -59,7 +59,7 @@ build CMakeFiles\testlib.dir\the_game\mobs.cpp.obj: CXX_COMPILER__testlib_RelWit
 #############################################
 # Link the executable testlib.exe
 
-build testlib.exe: CXX_EXECUTABLE_LINKER__testlib_RelWithDebInfo CMakeFiles\testlib.dir\the_game\mobs.cpp.obj | C$:\Users\asis\Desktop\SFML-2.5.1\lib\sfml-graphics-d.lib C$:\Users\asis\Desktop\SFML-2.5.1\lib\sfml-window-d.lib C$:\Users\asis\Desktop\SFML-2.5.1\lib\sfml-system-d.lib
+build testlib.exe: CXX_EXECUTABLE_LINKER__testlib_RelWithDebInfo CMakeFiles\testlib.dir\the_game\theGame.cpp.obj | C$:\Users\asis\Desktop\SFML-2.5.1\lib\sfml-graphics-d.lib C$:\Users\asis\Desktop\SFML-2.5.1\lib\sfml-window-d.lib C$:\Users\asis\Desktop\SFML-2.5.1\lib\sfml-system-d.lib
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /Zi /O2 /Ob1 /DNDEBUG
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = C:\Users\asis\Desktop\SFML-2.5.1\lib\sfml-graphics-d.lib  C:\Users\asis\Desktop\SFML-2.5.1\lib\sfml-window-d.lib  C:\Users\asis\Desktop\SFML-2.5.1\lib\sfml-system-d.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
