@@ -18,11 +18,12 @@ int main()
                 window.close();
         }
 
+        sf::Cursor cursor;
+        if (cursor.loadFromSystem(sf::Cursor::Hand))
+            window.setMouseCursor(cursor);
+
         // clear the window with black color
         window.clear(sf::Color::Blue);
-
-        // draw everything here...
-        // window.draw(...);
 
         // end the current frame
         window.display();
