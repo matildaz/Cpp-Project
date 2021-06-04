@@ -232,6 +232,9 @@ Killing the Mobs_BINARY_DIR:STATIC=C:/Users/asis/Desktop/Cpp Project/out/build/x
 //Value Computed by CMake
 Killing the Mobs_SOURCE_DIR:STATIC=C:/Users/asis/Desktop/Cpp Project
 
+//Path to a file.
+SFML_DOC_DIR:PATH=SFML_DOC_DIR-NOTFOUND
+
 //Treat compiler warnings as errors
 WARNINGS_AS_ERRORS:BOOL=OFF
 

@@ -220,6 +220,12 @@ Cpp Project_SOURCE_DIR:STATIC=C:/Users/asis/Desktop/Cpp Project
 // (LTO)
 ENABLE_IPO:BOOL=OFF
 
+//The directory containing a CMake configuration file for SFML.
+SFML_DIR:PATH=SFML_DIR-NOTFOUND
+
+//Path to a file.
+SFML_DOC_DIR:PATH=SFML_DOC_DIR-NOTFOUND
+
 //Treat compiler warnings as errors
 WARNINGS_AS_ERRORS:BOOL=OFF
 

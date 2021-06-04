@@ -39,7 +39,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "Debug"
+			"value" : "RelWithDebInfo"
 		},
 		{
 			"name" : "CMAKE_CACHEFILE_DIR",
@@ -51,7 +51,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/asis/Desktop/Cpp Project/out/build/x64-Debug (по умолчанию)"
+			"value" : "c:/Users/asis/Desktop/Cpp Project/out/build/x64-Release"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -539,7 +539,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "C:/Users/asis/Desktop/Cpp Project/out/install/x64-Debug (по умолчанию)"
+			"value" : "C:/Users/asis/Desktop/Cpp Project/out/install/x64-Release"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -1135,7 +1135,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/asis/Desktop/Cpp Project/out/build/x64-Debug (по умолчанию)"
+			"value" : "C:/Users/asis/Desktop/Cpp Project/out/build/x64-Release"
 		},
 		{
 			"name" : "Cpp Project_SOURCE_DIR",
@@ -1162,52 +1162,28 @@
 			"value" : "OFF"
 		},
 		{
-			"name" : "Group chat_BINARY_DIR",
+			"name" : "SFML_DIR",
 			"properties" : 
 			[
 				{
 					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
+					"value" : "The directory containing a CMake configuration file for SFML."
 				}
 			],
-			"type" : "STATIC",
-			"value" : "C:/Users/asis/Desktop/Cpp Project/out/build/x64-Debug (по умолчанию)"
+			"type" : "PATH",
+			"value" : "SFML_DIR-NOTFOUND"
 		},
 		{
-			"name" : "Group chat_SOURCE_DIR",
+			"name" : "SFML_DOC_DIR",
 			"properties" : 
 			[
 				{
 					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
+					"value" : "Path to a file."
 				}
 			],
-			"type" : "STATIC",
-			"value" : "C:/Users/asis/Desktop/Cpp Project"
-		},
-		{
-			"name" : "Killing the Mobs_BINARY_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "C:/Users/asis/Desktop/Cpp Project/out/build/x64-Debug (по умолчанию)"
-		},
-		{
-			"name" : "Killing the Mobs_SOURCE_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "C:/Users/asis/Desktop/Cpp Project"
+			"type" : "PATH",
+			"value" : "SFML_DOC_DIR-NOTFOUND"
 		},
 		{
 			"name" : "WARNINGS_AS_ERRORS",
@@ -1231,7 +1207,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/asis/Desktop/Cpp Project/out/build/x64-Debug (по умолчанию)/external/doctest"
+			"value" : "C:/Users/asis/Desktop/Cpp Project/out/build/x64-Release/external/doctest"
 		},
 		{
 			"name" : "doctest_SOURCE_DIR",

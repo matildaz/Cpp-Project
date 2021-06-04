@@ -1,0 +1,5 @@
+# ninja log v5
+0	1275	6445111035740718	CMakeFiles/testlib.dir/the_game/mobs.cpp.obj	e283723308870093
+3	4376	6445111066767703	external/doctest/CMakeFiles/doctest.dir/doctest.cpp.obj	32b93acef11fd396
+1279	2465	6445111045604329	testlib.exe	d297b3fcf5488e48
+4377	4454	6445111067386056	external/doctest/doctest.lib	353e17e8ceac7478

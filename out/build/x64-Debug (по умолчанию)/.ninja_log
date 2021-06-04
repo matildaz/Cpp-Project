@@ -1,3 +1,6 @@
 # ninja log v5
-0	1726	6445029714932326	external/doctest/CMakeFiles/doctest.dir/doctest.cpp.obj	c915e56d664a49ce
-1728	1851	6445029716079229	external/doctest/doctest.lib	353e17e8ceac7478
+6	1749	6445119144497824	external/doctest/CMakeFiles/doctest.dir/doctest.cpp.obj	c915e56d664a49ce
+0	884	6445127180171944	CMakeFiles/testlib.dir/the_game/mobs.cpp.obj	626cdf5ae112bebd
+5	119	6445120750232390	external/doctest/doctest.lib	353e17e8ceac7478
+885	1099	6445127181917245	testlib.exe	d297b3fcf5488e48
+0	13	0	clean	63bc6ea4e62f3343

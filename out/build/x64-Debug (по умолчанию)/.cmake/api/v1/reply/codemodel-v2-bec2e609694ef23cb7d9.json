@@ -15,7 +15,11 @@
 						"string" : "3.8"
 					},
 					"projectIndex" : 0,
-					"source" : "."
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						1
+					]
 				},
 				{
 					"build" : "external/doctest",
@@ -44,7 +48,11 @@
 					[
 						0
 					],
-					"name" : "Cpp Project"
+					"name" : "Cpp Project",
+					"targetIndexes" : 
+					[
+						1
+					]
 				},
 				{
 					"directoryIndexes" : 
@@ -67,6 +75,13 @@
 					"jsonFile" : "target-doctest-Debug-7be977d5e4dcc9da49d3.json",
 					"name" : "doctest",
 					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "testlib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-testlib-Debug-38e959cde3933db1a1d8.json",
+					"name" : "testlib",
+					"projectIndex" : 0
 				}
 			]
 		}

@@ -126,6 +126,30 @@
 			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.20/Modules/CMakeCommonLanguageInclude.cmake"
 		},
 		{
+			"isExternal" : true,
+			"path" : "C:/Users/asis/Desktop/SFML-2.5.1/lib/cmake/SFML/SFMLConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/Users/asis/Desktop/SFML-2.5.1/lib/cmake/SFML/SFMLConfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/Users/asis/Desktop/SFML-2.5.1/lib/cmake/SFML/SFMLSharedTargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/Users/asis/Desktop/SFML-2.5.1/lib/cmake/SFML/SFMLSharedTargets-debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/Users/asis/Desktop/SFML-2.5.1/lib/cmake/SFML/SFMLSharedTargets-release.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/Users/asis/Desktop/SFML-2.5.1/lib/cmake/SFML/SFMLConfigDependencies.cmake"
+		},
+		{
 			"path" : "cmake/StandardProjectSettings.cmake"
 		},
 		{

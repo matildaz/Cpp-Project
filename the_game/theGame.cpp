@@ -19,7 +19,7 @@ int main()
         }
 
         // clear the window with black color
-        window.clear(sf::Color::Black);
+        window.clear(sf::Color::Blue);
 
         // draw everything here...
         // window.draw(...);

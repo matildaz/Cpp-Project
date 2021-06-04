@@ -5,6 +5,12 @@ cmake_minimum_required (VERSION 3.8)
 
 project ("Cpp Project")
 
+set(SFML_DIR "C:/Users/asis/Desktop/SFML-2.5.1/lib/cmake/SFML")
+
+find_package(SFML REQUIRED system window graphics network)
+add_executable(testlib "the_game/theGame.cpp")
+target_link_libraries(testlib sfml-graphics sfml-window sfml-system)
+
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 include(cmake/StandardProjectSettings.cmake)
 include(cmake/Catch.cmake)
