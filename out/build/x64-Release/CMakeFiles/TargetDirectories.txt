@@ -1,0 +1,7 @@
+C:/Users/asis/Desktop/Cpp Project/out/build/x64-Release/CMakeFiles/rebuild_cache.dir
+C:/Users/asis/Desktop/Cpp Project/out/build/x64-Release/CMakeFiles/test.dir
+C:/Users/asis/Desktop/Cpp Project/out/build/x64-Release/CMakeFiles/edit_cache.dir
+C:/Users/asis/Desktop/Cpp Project/out/build/x64-Release/external/doctest/CMakeFiles/rebuild_cache.dir
+C:/Users/asis/Desktop/Cpp Project/out/build/x64-Release/external/doctest/CMakeFiles/test.dir
+C:/Users/asis/Desktop/Cpp Project/out/build/x64-Release/external/doctest/CMakeFiles/doctest.dir
+C:/Users/asis/Desktop/Cpp Project/out/build/x64-Release/external/doctest/CMakeFiles/edit_cache.dir

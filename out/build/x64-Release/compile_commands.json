@@ -1,0 +1,7 @@
+[
+{
+  "directory": "C:/Users/asis/Desktop/Cpp Project/out/build/x64-Release",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2019\\PROFES~1\\VC\\Tools\\MSVC\\1429~1.300\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -I..\\..\\..\\external\\doctest /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /Zi /O2 /Ob1 /DNDEBUG /Foexternal\\doctest\\CMakeFiles\\doctest.dir\\doctest.cpp.obj /FdTARGET_COMPILE_PDB /FS -c \"C:\\Users\\asis\\Desktop\\Cpp Project\\external\\doctest\\doctest.cpp\"",
+  "file": "C:/Users/asis/Desktop/Cpp Project/external/doctest/doctest.cpp"
+}
+]
