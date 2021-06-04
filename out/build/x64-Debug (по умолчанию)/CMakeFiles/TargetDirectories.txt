@@ -1,0 +1,7 @@
+C:/Users/asis/Desktop/Cpp Project/out/build/x64-Debug (по умолчанию)/CMakeFiles/rebuild_cache.dir
+C:/Users/asis/Desktop/Cpp Project/out/build/x64-Debug (по умолчанию)/CMakeFiles/test.dir
+C:/Users/asis/Desktop/Cpp Project/out/build/x64-Debug (по умолчанию)/CMakeFiles/edit_cache.dir
+C:/Users/asis/Desktop/Cpp Project/out/build/x64-Debug (по умолчанию)/external/doctest/CMakeFiles/rebuild_cache.dir
+C:/Users/asis/Desktop/Cpp Project/out/build/x64-Debug (по умолчанию)/external/doctest/CMakeFiles/test.dir
+C:/Users/asis/Desktop/Cpp Project/out/build/x64-Debug (по умолчанию)/external/doctest/CMakeFiles/doctest.dir
+C:/Users/asis/Desktop/Cpp Project/out/build/x64-Debug (по умолчанию)/external/doctest/CMakeFiles/edit_cache.dir
