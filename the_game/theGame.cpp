@@ -1,13 +1,10 @@
 #include "mobs.hpp"
 #include <SFML/Graphics.hpp>
+#include "string"
+#include "vector"
 
-auto textureSprite(sf::RenderWindow window) {
-    sf::Texture texture;
-    texture.loadFromFile("\sprites\minotaur_1\Minotaur_01_Taunt_000.png");
-    sf::Sprite  sprite;
-    sprite.setTexture(texture);
-    sprite.setPosition(200, 100);
-    window.draw(sprite);
+std::string texture_mob(int n, std::vector<std::string> mob) {
+    return mob[n];
 }
 
 bool cursorPosition(sf::Vector2i position) {
@@ -22,15 +19,17 @@ int main()
     // create the window
     sf::RenderWindow window(sf::VideoMode(800, 1000), "My window");
 
-    sf::Texture texture;
-    texture.loadFromFile("sprites/minotaur_1/Minotaur_01_Taunt_000.png");
-    sf::Sprite sprite;
-    sprite.setTexture(texture);
-    sprite.setPosition(0, 0);
+    int n = 0;
 
     // run the program as long as the window is open
     while (window.isOpen())
     {
+        sf::Texture texture;
+        texture.loadFromFile(texture_mob(n,minotaur_1_stand));
+        sf::Sprite sprite;
+        sprite.setTexture(texture);
+        sprite.setPosition(0, 100);
+
         // check all the window's events that were triggered since the last iteration of the loop
         sf::Event event;
         while (window.pollEvent(event))
@@ -54,6 +53,10 @@ int main()
 
     // end the current frame
     window.display();
+    window.clear(sf::Color::White);
+    n += 1;
+    if (n > 17)
+        n = 0;
     }
 
     return 0;
