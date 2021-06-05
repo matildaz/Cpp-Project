@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "string"
 #include "vector"
+#include "memory"
 
 std::string texture_mob(int n, std::vector<std::string> mob) {
     return mob[n];
@@ -23,14 +24,16 @@ int main()
     auto mobPicture = minotaur_1_stand;
     int cntMinoyaur = 0;
 
+    lightMobs mob;
+
     // run the program as long as the window is open
     while (window.isOpen())
     {
-        sf::Texture texture;
-        texture.loadFromFile(texture_mob(n,mobPicture));
-        sf::Sprite sprite;
-        sprite.setTexture(texture);
-        sprite.setPosition(0, 100);
+        sf::Clock clock;
+
+        if (mob.healthPoints <= 0) {
+            continue;
+        }
 
         // check all the window's events that were triggered since the last iteration of the loop
         sf::Event event;
@@ -48,7 +51,9 @@ int main()
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
             sf::Vector2i position = sf::Mouse::getPosition(window);
             if (cursorPosition(position) == true) {
-                cntMinoyaur = n % 3;
+                cntMinoyaur += 1;
+                if (cntMinoyaur > 3)
+                    cntMinoyaur = 0;
                 n = 0;
                 if (cntMinoyaur == 0)
                     mobPicture = minotaur_1_stand;
@@ -56,8 +61,17 @@ int main()
                     mobPicture = minotaur_2_stand;
                 else
                     mobPicture = minotaur_3_stand;
-            }                    
+            }
+            sf::sleep(sf::milliseconds(10));
+            clock.getElapsedTime();
+            clock.restart();
         }
+
+    sf::Texture texture;
+    texture.loadFromFile(texture_mob(n, mobPicture));
+    sf::Sprite sprite;
+    sprite.setTexture(texture);
+    sprite.setPosition(0, 100);
 
     window.draw(sprite);
 

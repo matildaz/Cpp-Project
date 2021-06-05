@@ -4,7 +4,7 @@
 
 //random_shuffle(arr[0],arr[3]);
 
-class lightMobs {
+struct lightMobs {
     int healthPoints = 10;    
     int coins = 5;
 
