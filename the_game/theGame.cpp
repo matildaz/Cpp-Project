@@ -10,7 +10,7 @@ std::string texture_mob(int n, std::vector<std::string> mob) {
 
 bool cursorPosition(sf::Vector2i position) {
     if ((position.x >= 200) && (position.x <= 600)) {
-        if (position.y >= 100 && position.y <= 400)
+        if (position.y >= 100 && position.y <= 550)
             return true;
     }
 }
@@ -19,15 +19,20 @@ int main()
 {
     // create the window
     sf::RenderWindow window(sf::VideoMode(800, 1000), "My window");
+    sf::Sprite sprite;
+
+    player knight;
 
     int n = 0;
     auto mobPicture = minotaur_1_stand;
     int cntMinoyaur = 0;
 
-    lightMobs mob_1;
-    lightMobs mob_2;
-    lightMobs mob_3;
+    lightMobs mob_1(minotaur_1_stand);
+    lightMobs mob_2(minotaur_2_stand);
+    lightMobs mob_3(minotaur_3_stand);
     int cntMob = 0;
+
+    sf::Texture texture;
 
     // run the program as long as the window is open
     while (window.isOpen())
@@ -47,33 +52,53 @@ int main()
         if (cursor.loadFromSystem(sf::Cursor::Hand))
             window.setMouseCursor(cursor);
 
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-            sf::Vector2i position = sf::Mouse::getPosition(window);
-            if (cursorPosition(position) == true) {
-                cntMinoyaur += 1;
-                if (cntMinoyaur > 3)
-                    cntMinoyaur = 0;
-                n = 0;
-                if (cntMinoyaur == 0)
-                    mobPicture = minotaur_1_stand;
-                else if (cntMinoyaur == 1)
-                    mobPicture = minotaur_2_stand;
-                else {
-                    mobPicture = minotaur_3_stand;
-                    cntMob += 1;
+        if (mob_1.isNotAlive() == false) {
+            // upload the texture of mob
+            texture.loadFromFile(minotaur_1_stand[n]);
+            sprite.setTexture(texture);
+            sprite.setPosition(0, 100);
+            // checking the clicking on mob
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                sf::Vector2i position = sf::Mouse::getPosition(window);
+                if (cursorPosition(position) == true) {
+                    mob_1.healthPoints -= knight.damage;
                 }
+                clock.getElapsedTime();
+                clock.restart();
             }
-            sf::sleep(sf::milliseconds(50));
-            clock.getElapsedTime();
-            clock.restart();
         }
-
-    sf::Texture texture;
-    texture.loadFromFile(texture_mob(n, mobPicture));
-    sf::Sprite sprite;
-    sprite.setTexture(texture);
-    sprite.setPosition(0, 100);
-
+        else if (mob_2.isNotAlive() == false) {
+            // upload the texture of mob
+            texture.loadFromFile(minotaur_2_stand[n]);
+            sprite.setTexture(texture);
+            sprite.setPosition(0, 100);
+            // checking the clicking on mob
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                sf::Vector2i position = sf::Mouse::getPosition(window);
+                if (cursorPosition(position) == true) {
+                    mob_2.healthPoints -= knight.damage;
+                }
+                clock.getElapsedTime();
+                clock.restart();
+            }
+        }
+        else if (mob_3.isNotAlive() == false) {
+            // upload the texture of mob
+            texture.loadFromFile(minotaur_3_stand[n]);
+            sprite.setTexture(texture);
+            sprite.setPosition(0, 100);
+            // checking the clicking on mob
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                sf::Vector2i position = sf::Mouse::getPosition(window);
+                if (cursorPosition(position) == true) {
+                    mob_3.healthPoints -= knight.damage;
+                }
+                clock.getElapsedTime();
+                clock.restart();
+            }
+        }
+        
+        
     window.draw(sprite);
 
     // end the current frame

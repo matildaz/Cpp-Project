@@ -27,16 +27,20 @@ std::vector<std::string> minotaur_3_stand = { "sprites/minotaur_3/Minotaur_03_Ta
     "sprites/minotaur_3/Minotaur_03_Taunt_017.png" };
 
 struct lightMobs {
-    int healthPoints = 10;    
+    int healthPoints = 10; 
+    int standartHealthPoints = 10;
     int coins = 5;
     std::vector<std::string> sprites;
 
-    lightMobs() {
-        std::vector<std::string> sprites = minotaur_1_stand;
+    lightMobs(std::vector<std::string> sprites) {
+        sprites = minotaur_1_stand;
     }
 
     int levelUp() {
+        while (healthPoints < standartHealthPoints)
+            healthPoints += 1;
         healthPoints += 10;
+        standartHealthPoints += 10;
         coins += 5;
         return 0;
     }
@@ -44,10 +48,16 @@ struct lightMobs {
     bool isNotAlive() {
         if (healthPoints <= 0)
             return true;
+        else
+            return false;
+    }
+
+    std::string getNextSprite(int n) {
+        return sprites[n];
     }
 };
 
-class boss {
+struct boss {
     int healthPoints = 100;
     int coins = 100;
     int timeToLeave = 90;
@@ -58,7 +68,7 @@ class boss {
     }
 };
 
-class player {
+struct player {
     int damage = 1;
 
     int swordUpgrade() {
