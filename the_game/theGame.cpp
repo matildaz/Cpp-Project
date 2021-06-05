@@ -20,12 +20,14 @@ int main()
     sf::RenderWindow window(sf::VideoMode(800, 1000), "My window");
 
     int n = 0;
+    auto mobPicture = minotaur_1_stand;
+    int cntMinoyaur = 0;
 
     // run the program as long as the window is open
     while (window.isOpen())
     {
         sf::Texture texture;
-        texture.loadFromFile(texture_mob(n,minotaur_1_stand));
+        texture.loadFromFile(texture_mob(n,mobPicture));
         sf::Sprite sprite;
         sprite.setTexture(texture);
         sprite.setPosition(0, 100);
@@ -37,16 +39,24 @@ int main()
             // "close requested" event: we close the window
             if (event.type == sf::Event::Closed)
                 window.close();
+        }
 
-            sf::Cursor cursor;
-            if (cursor.loadFromSystem(sf::Cursor::Hand))
-                window.setMouseCursor(cursor);
+        sf::Cursor cursor;
+        if (cursor.loadFromSystem(sf::Cursor::Hand))
+            window.setMouseCursor(cursor);
 
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-                sf::Vector2i position = sf::Mouse::getPosition();
-                if (cursorPosition(position) == true)
-                    continue;
-            }
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+            sf::Vector2i position = sf::Mouse::getPosition(window);
+            if (cursorPosition(position) == true) {
+                cntMinoyaur = n % 3;
+                n = 0;
+                if (cntMinoyaur == 0)
+                    mobPicture = minotaur_1_stand;
+                else if (cntMinoyaur == 1)
+                    mobPicture = minotaur_2_stand;
+                else
+                    mobPicture = minotaur_3_stand;
+            }                    
         }
 
     window.draw(sprite);
