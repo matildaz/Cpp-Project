@@ -24,16 +24,15 @@ int main()
     auto mobPicture = minotaur_1_stand;
     int cntMinoyaur = 0;
 
-    lightMobs mob;
+    lightMobs mob_1;
+    lightMobs mob_2;
+    lightMobs mob_3;
+    int cntMob = 0;
 
     // run the program as long as the window is open
     while (window.isOpen())
     {
         sf::Clock clock;
-
-        if (mob.healthPoints <= 0) {
-            continue;
-        }
 
         // check all the window's events that were triggered since the last iteration of the loop
         sf::Event event;
@@ -59,10 +58,12 @@ int main()
                     mobPicture = minotaur_1_stand;
                 else if (cntMinoyaur == 1)
                     mobPicture = minotaur_2_stand;
-                else
+                else {
                     mobPicture = minotaur_3_stand;
+                    cntMob += 1;
+                }
             }
-            sf::sleep(sf::milliseconds(10));
+            sf::sleep(sf::milliseconds(50));
             clock.getElapsedTime();
             clock.restart();
         }
@@ -81,6 +82,13 @@ int main()
     n += 1;
     if (n > 17)
         n = 0;
+
+    if (mob_3.isNotAlive() == true) {
+        mob_1.levelUp();
+        mob_2.levelUp();
+        mob_3.levelUp();
+        cntMob = 0;
+        }
     }
 
     return 0;
