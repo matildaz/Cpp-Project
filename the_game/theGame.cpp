@@ -19,20 +19,46 @@ int main()
 {
     // create the window
     sf::RenderWindow window(sf::VideoMode(800, 1000), "My window");
-    sf::Sprite sprite;
 
-    player knight;
-
+    // vars
     int n = 0;
     auto mobPicture = minotaur_1_stand;
     int cntMinoyaur = 0;
+    int cntMob = 0;
 
+    // Player and mobs
+    player knight;
     lightMobs mob_1(minotaur_1_stand);
     lightMobs mob_2(minotaur_2_stand);
     lightMobs mob_3(minotaur_3_stand);
-    int cntMob = 0;
 
+    // Sprites and textures
+    sf::Sprite sprite;
     sf::Texture texture;
+
+    // Texts and fonts
+    sf::Font font;
+    sf::Text text;
+    font.loadFromFile("external/Fonts/Russian.ttf");
+    text.setFont(font);
+    text.setCharacterSize(24);
+    text.setFillColor(sf::Color::Red);
+    text.setStyle(sf::Text::Bold);
+    text.setPosition(350, 100);
+
+    sf::Text playerDamage;
+    playerDamage.setFont(font);
+    playerDamage.setCharacterSize(24);
+    playerDamage.setFillColor(sf::Color::Red);
+    playerDamage.setStyle(sf::Text::Bold);
+    playerDamage.setPosition(100, 600);
+
+    sf::Text playerCoins;
+    playerCoins.setFont(font);
+    playerCoins.setCharacterSize(24);
+    playerCoins.setFillColor(sf::Color::Red);
+    playerCoins.setStyle(sf::Text::Bold);
+    playerCoins.setPosition(100, 630);
 
     // run the program as long as the window is open
     while (window.isOpen())
@@ -41,6 +67,7 @@ int main()
 
         // check all the window's events that were triggered since the last iteration of the loop
         sf::Event event;
+
         while (window.pollEvent(event))
         {
             // "close requested" event: we close the window
@@ -62,6 +89,15 @@ int main()
                 sf::Vector2i position = sf::Mouse::getPosition(window);
                 if (cursorPosition(position) == true) {
                     mob_1.healthPoints -= knight.damage;
+                    std::string hpStr = std::to_string(mob_1.healthPoints);
+                    hpStr += " HP";
+                    text.setString(hpStr);
+                    if (mob_1.isNotAlive()) {
+                        knight.coins += mob_1.coins;
+                        std::string coinsStr = std::to_string(knight.coins);
+                        coinsStr += " Coins";
+                        playerCoins.setString(coinsStr);
+                    }
                 }
                 clock.getElapsedTime();
                 clock.restart();
@@ -77,6 +113,15 @@ int main()
                 sf::Vector2i position = sf::Mouse::getPosition(window);
                 if (cursorPosition(position) == true) {
                     mob_2.healthPoints -= knight.damage;
+                    std::string hpStr = std::to_string(mob_2.healthPoints);
+                    hpStr += " HP";
+                    text.setString(hpStr);
+                    if (mob_2.isNotAlive()) {
+                        knight.coins += mob_2.coins;
+                        std::string coinsStr = std::to_string(knight.coins);
+                        coinsStr += " Coins";
+                        playerCoins.setString(coinsStr);
+                    }
                 }
                 clock.getElapsedTime();
                 clock.restart();
@@ -92,18 +137,34 @@ int main()
                 sf::Vector2i position = sf::Mouse::getPosition(window);
                 if (cursorPosition(position) == true) {
                     mob_3.healthPoints -= knight.damage;
+                    std::string hpStr = std::to_string(mob_3.healthPoints);
+                    hpStr += " HP";
+                    text.setString(hpStr);
+                    if (mob_3.isNotAlive()) {
+                        knight.coins += mob_3.coins;
+                        std::string coinsStr = std::to_string(knight.coins);
+                        coinsStr += " Coins";
+                        playerCoins.setString(coinsStr);
+                    }
                 }
                 clock.getElapsedTime();
                 clock.restart();
             }
         }
-        
-        
+
+    std::string damageStr = std::to_string(knight.damage);
+    damageStr += " per one hit";
+    playerDamage.setString(damageStr);
+
+    window.draw(text);
     window.draw(sprite);
+    window.draw(playerCoins);
+    window.draw(playerDamage);
 
     // end the current frame
     window.display();
     window.clear(sf::Color::White);
+
     n += 1;
     if (n > 17)
         n = 0;

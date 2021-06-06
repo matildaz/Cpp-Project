@@ -70,6 +70,7 @@ struct boss {
 
 struct player {
     int damage = 1;
+    int coins = 0;
 
     int swordUpgrade() {
         damage += 1;
