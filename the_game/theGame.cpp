@@ -20,6 +20,12 @@ int main()
     // create the window
     sf::RenderWindow window(sf::VideoMode(800, 1000), "My window");
 
+    // background
+    sf::Texture background;
+    background.loadFromFile("sprites/background/Group 4backgroundV1.png");
+    sf::Sprite backgroundSprite;
+    backgroundSprite.setTexture(background);
+
     // vars
     int n = 0;
     auto mobPicture = minotaur_1_stand;
@@ -44,7 +50,7 @@ int main()
     text.setCharacterSize(24);
     text.setFillColor(sf::Color::Red);
     text.setStyle(sf::Text::Bold);
-    text.setPosition(350, 100);
+    text.setPosition(300, 100);
 
     sf::Text playerDamage;
     playerDamage.setFont(font);
@@ -64,6 +70,8 @@ int main()
     while (window.isOpen())
     {
         sf::Clock clock;
+        window.clear(sf::Color::White);
+        window.draw(backgroundSprite);
 
         // check all the window's events that were triggered since the last iteration of the loop
         sf::Event event;
@@ -163,7 +171,6 @@ int main()
 
     // end the current frame
     window.display();
-    window.clear(sf::Color::White);
 
     n += 1;
     if (n > 17)
