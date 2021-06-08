@@ -15,6 +15,13 @@ bool cursorPosition(sf::Vector2i position) {
     }
 }
 
+bool cursorPositionUp(sf::Vector2i position) {
+    if ((position.x >= 700) && (position.x <= 800)) {
+        if (position.y >= 900 && position.y <= 1000)
+            return true;
+    }
+}
+
 int main()
 {
     // create the window
@@ -22,7 +29,7 @@ int main()
 
     // background
     sf::Texture background;
-    background.loadFromFile("sprites/background/Group 4backgroundV1.png");
+    background.loadFromFile("sprites/background/Group 4backgroundV3.png");
     sf::Sprite backgroundSprite;
     backgroundSprite.setTexture(background);
 
@@ -66,6 +73,13 @@ int main()
     playerCoins.setStyle(sf::Text::Bold);
     playerCoins.setPosition(100, 630);
 
+    sf::Text playerCostOfUpgrade;
+    playerCostOfUpgrade.setFont(font);
+    playerCostOfUpgrade.setCharacterSize(24);
+    playerCostOfUpgrade.setFillColor(sf::Color::Red);
+    playerCostOfUpgrade.setStyle(sf::Text::Bold);
+    playerCostOfUpgrade.setPosition(100, 660);
+
     // run the program as long as the window is open
     while (window.isOpen())
     {
@@ -86,6 +100,18 @@ int main()
         sf::Cursor cursor;
         if (cursor.loadFromSystem(sf::Cursor::Hand))
             window.setMouseCursor(cursor);
+
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+            sf::Vector2i position = sf::Mouse::getPosition(window);
+            if (cursorPositionUp(position) == true & knight.coins > knight.costOfUpgrade) {
+                knight.coins -= knight.costOfUpgrade;
+                knight.swordUpgrade();
+                knight.costUpdate();
+                std::string coinsStr = std::to_string(knight.coins);
+                coinsStr += " Coins";
+                playerCoins.setString(coinsStr);
+            }
+        }
 
         if (mob_1.isNotAlive() == false) {
             // upload the texture of mob
@@ -163,11 +189,13 @@ int main()
     std::string damageStr = std::to_string(knight.damage);
     damageStr += " per one hit";
     playerDamage.setString(damageStr);
+    playerCostOfUpgrade.setString(std::to_string(knight.costOfUpgrade)+" coins to upgrade your sword");
 
     window.draw(text);
     window.draw(sprite);
     window.draw(playerCoins);
     window.draw(playerDamage);
+    window.draw(playerCostOfUpgrade);
 
     // end the current frame
     window.display();

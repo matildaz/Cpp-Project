@@ -26,6 +26,14 @@ std::vector<std::string> minotaur_3_stand = { "sprites/minotaur_3/Minotaur_03_Ta
     "sprites/minotaur_3/Minotaur_03_Taunt_014.png","sprites/minotaur_3/Minotaur_03_Taunt_015.png","sprites/minotaur_3/Minotaur_03_Taunt_016.png",
     "sprites/minotaur_3/Minotaur_03_Taunt_017.png" };
 
+std::vector<std::string> boss_1 = { "sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_000.png","sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_001.png",
+    "sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_002.png","sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_003.png","sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_004.png",
+    "sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_005.png","sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_006.png","sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_007.png",
+    "sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_008.png","sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_009.png","sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_010.png",
+    "sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_011.png","sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_012.png","sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_013.png",
+    "sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_014.png","sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_015.png","sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_016.png",
+    "sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_017.png" };
+
 struct lightMobs {
     int healthPoints = 10; 
     int standartHealthPoints = 10;
@@ -61,18 +69,31 @@ struct boss {
     int healthPoints = 100;
     int coins = 100;
     int timeToLeave = 90;
+    std::vector<std::string> sprites;
+
+    boss(std::vector<std::string> sprites) {
+        sprites = boss_1;
+    }
 
     int levelUp() {
         healthPoints += 100;
         coins += 100;
     }
+
 };
 
 struct player {
     int damage = 1;
     int coins = 0;
+    int costOfUpgrade = 10;
 
     int swordUpgrade() {
         damage += 1;
+        return 0;
+    }
+
+    int costUpdate() {
+        costOfUpgrade += 10;
+        return 0;
     }
 };
