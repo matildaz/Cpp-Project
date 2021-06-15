@@ -36,18 +36,28 @@ std::vector<std::string > boss_1_sprites = { "sprites/Wraith_3/PNG Sequences/Tau
 
 struct lightMobs
 {
+	/*
+	<summary>
+	Структура lightMobs описывает мобов (противников)
+	У каждого моба изначально есть такие параметры:
+	1) healthPoints - отвечает за текущее количество очков здоровья
+	2) standartHealthPoints - отвечает за то количество очков здоровья, с которым заспавнится моб
+	3) coins - отвечает за то количество монет, которое получит игрок, когда убьет данного моба
+	</summary>
+	*/
 	int healthPoints = 10;
 	int standartHealthPoints = 10;
 	int coins = 5;
 	std::vector<std::string > sprites;
 
-	lightMobs(std::vector<std::string > sprites)
-	{
-		sprites = minotaur_1_stand;
-	}
-
 	int levelUp()
 	{
+		/// <summary>
+		/// Функция не принимает на вход никаких параметров и отдает значение типа int
+		/// </summary>
+		/// <returns>
+		/// При выполнении данной функции моб воскресает с большим количеством очков здоровья и монет в кармане
+		/// </returns>
 		while (healthPoints < standartHealthPoints)
 			healthPoints += 1;
 		healthPoints += 10;
@@ -58,6 +68,12 @@ struct lightMobs
 
 	bool isNotAlive()
 	{
+		/// <summary>
+		/// Функция не принимает на вход никаких параметров и возвращает значение типа bool
+		/// </summary>
+		/// <returns>
+		/// Функция проверяет на наличие у моба очков здоровья и в зависимости от результата выводит либо "true", либо "false"
+		/// </returns>
 		if (healthPoints <= 0)
 			return true;
 		else
@@ -66,24 +82,42 @@ struct lightMobs
 
 	std::string getNextSprite(int n)
 	{
+		/// <summary>
+		/// Функция принимает на вход один параметр и отдает конкретный спрайт
+		/// </summary>
+		/// <param name="n"> 
+		/// Параметр отвечает за выбор конкретного спрайта для прорисовки
+		/// </param>
+		/// <returns>
+		/// Возвращает конкретный спрайт в формате std::string
+		/// </returns>
 		return sprites[n];
 	}
 };
 
 struct boss
 {
+	/*
+	<summary>
+	Структура boss описывает мобов (противников) повышенной сожности
+	У каждого моба изначально есть такие параметры:
+	1) healthPoints - отвечает за текущее количество очков здоровья
+	2) standartHealthPoints - отвечает за то количество очков здоровья, с которым заспавнится моб
+	3) coins - отвечает за то количество монет, которое получит игрок, когда убьет данного моба
+	</summary>
+	*/
 	int healthPoints = 100;
 	int coins = 100;
-	int timeToLeave = 90;
 	std::vector<std::string > sprites;
-
-	boss(std::vector<std::string > sprites)
-	{
-		sprites = boss_1_sprites;
-	}
 
 	int levelUp()
 	{
+		/// <summary>
+		/// Функция не принимает на вход никаких параметров и отдает значение типа int
+		/// </summary>
+		/// <returns>
+		/// При выполнении данной функции моб воскресает с большим количеством очков здоровья и монет в кармане
+		/// </returns>
 		healthPoints += 100;
 		coins += 100;
 		return 0;
@@ -91,6 +125,12 @@ struct boss
 
 	bool isNotAlive()
 	{
+		/// <summary>
+		/// Функция не принимает на вход никаких параметров и возвращает значение типа bool
+		/// </summary>
+		/// <returns>
+		/// Функция проверяет на наличие у моба очков здоровья и в зависимости от результата выводит либо "true", либо "false"
+		/// </returns>
 		if (healthPoints <= 0)
 			return true;
 		else
@@ -98,21 +138,42 @@ struct boss
 	}
 };
 
-struct player
+class player
 {
-	int damage = 1;
-	int coins = 0;
-	int costOfUpgrade = 10;
+	/*
+	<summary>
+	Класс Player описывает игрока у которого есть такие параметры:
+	1) damage - урон наносимый за один удар по мобу
+	2) coins - количество монет в кошельке (сейчас)
+	3) costOfUpgrade - стоимость улучшения оружия
+	</summary>
+	*/
+	public:
+		int damage = 1;
+		int coins = 0;
+		int costOfUpgrade = 10;
 
-	int swordUpgrade()
-	{
-		damage += 1;
-		return 0;
-	}
+		int swordUpgrade()
+		{
+			/// <summary>
+			/// Функция не принимает на вход никаких параметров и возвращает значение типа int
+			/// </summary>
+			/// <returns>
+			/// Функция увеличивает урон игрока за один удар на одну единицу
+			/// </returns>
+			damage += 1;
+			return 0;
+		}
 
-	int costUpdate()
-	{
-		costOfUpgrade += 10;
-		return 0;
-	}
+		int costUpdate()
+		{
+			/// <summary>
+			/// Функция не принимает на вход никаких параметров и возвращает значение типа int
+			/// </summary>
+			/// <returns>
+			/// Функция срабатывает после того, как игрок увеличил свой урон, чтобы поднять цену на следующее увеличение урона
+			/// </returns>
+			costOfUpgrade += 10;
+			return 0;
+		}
 };
