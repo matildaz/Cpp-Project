@@ -87,7 +87,6 @@ struct boss {
         else
             return false;
     }
-
 };
 
 struct player {
