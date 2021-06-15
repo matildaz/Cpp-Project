@@ -16,8 +16,8 @@ bool cursorPosition(sf::Vector2i position) {
 }
 
 bool cursorPositionUp(sf::Vector2i position) {
-    if ((position.x >= 700) && (position.x <= 800)) {
-        if (position.y >= 900 && position.y <= 1000)
+    if ((position.x >= 75) && (position.x <= 725)) {
+        if (position.y >= 859 && position.y <= 939)
             return true;
     }
 }
@@ -29,7 +29,7 @@ int main()
 
     // background
     sf::Texture background;
-    background.loadFromFile("sprites/background/Group 4backgroundV3.png");
+    background.loadFromFile("sprites/background/Group 6backgroundV1.png");
     sf::Sprite backgroundSprite;
     backgroundSprite.setTexture(background);
 
@@ -44,6 +44,7 @@ int main()
     lightMobs mob_1(minotaur_1_stand);
     lightMobs mob_2(minotaur_2_stand);
     lightMobs mob_3(minotaur_3_stand);
+    boss boss_1(boss_1_sprites);
 
     // Sprites and textures
     sf::Sprite sprite;
@@ -52,33 +53,40 @@ int main()
     // Texts and fonts
     sf::Font font;
     sf::Text text;
-    font.loadFromFile("external/Fonts/Russian.ttf");
+    font.loadFromFile("external/Fonts/BalooTammudu2-Bold.ttf");
     text.setFont(font);
-    text.setCharacterSize(24);
+    text.setCharacterSize(40);
     text.setFillColor(sf::Color::Red);
     text.setStyle(sf::Text::Bold);
-    text.setPosition(300, 100);
+    text.setPosition(450, 660);
 
     sf::Text playerDamage;
     playerDamage.setFont(font);
-    playerDamage.setCharacterSize(24);
+    playerDamage.setCharacterSize(40);
     playerDamage.setFillColor(sf::Color::Red);
     playerDamage.setStyle(sf::Text::Bold);
-    playerDamage.setPosition(100, 600);
+    playerDamage.setPosition(100, 660);
 
     sf::Text playerCoins;
     playerCoins.setFont(font);
-    playerCoins.setCharacterSize(24);
+    playerCoins.setCharacterSize(40);
     playerCoins.setFillColor(sf::Color::Red);
     playerCoins.setStyle(sf::Text::Bold);
-    playerCoins.setPosition(100, 630);
+    playerCoins.setPosition(100, 770);
 
     sf::Text playerCostOfUpgrade;
     playerCostOfUpgrade.setFont(font);
-    playerCostOfUpgrade.setCharacterSize(24);
+    playerCostOfUpgrade.setCharacterSize(40);
     playerCostOfUpgrade.setFillColor(sf::Color::Red);
     playerCostOfUpgrade.setStyle(sf::Text::Bold);
-    playerCostOfUpgrade.setPosition(100, 660);
+    playerCostOfUpgrade.setPosition(100, 870);
+
+    sf::Text bossIsNow;
+    bossIsNow.setFont(font);
+    bossIsNow.setCharacterSize(60);
+    bossIsNow.setFillColor(sf::Color::Red);
+    bossIsNow.setStyle(sf::Text::Bold);
+    bossIsNow.setPosition(310, 50);
 
     // run the program as long as the window is open
     while (window.isOpen())
@@ -117,7 +125,7 @@ int main()
             // upload the texture of mob
             texture.loadFromFile(minotaur_1_stand[n]);
             sprite.setTexture(texture);
-            sprite.setPosition(0, 100);
+            sprite.setPosition(0, 105);
             // checking the clicking on mob
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                 sf::Vector2i position = sf::Mouse::getPosition(window);
@@ -141,7 +149,7 @@ int main()
             // upload the texture of mob
             texture.loadFromFile(minotaur_2_stand[n]);
             sprite.setTexture(texture);
-            sprite.setPosition(0, 100);
+            sprite.setPosition(0, 105);
             // checking the clicking on mob
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                 sf::Vector2i position = sf::Mouse::getPosition(window);
@@ -165,7 +173,7 @@ int main()
             // upload the texture of mob
             texture.loadFromFile(minotaur_3_stand[n]);
             sprite.setTexture(texture);
-            sprite.setPosition(0, 100);
+            sprite.setPosition(0, 105);
             // checking the clicking on mob
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                 sf::Vector2i position = sf::Mouse::getPosition(window);
@@ -186,31 +194,54 @@ int main()
             }
         }
 
-    std::string damageStr = std::to_string(knight.damage);
-    damageStr += " per one hit";
-    playerDamage.setString(damageStr);
-    playerCostOfUpgrade.setString(std::to_string(knight.costOfUpgrade)+" coins to upgrade your sword");
+        std::string damageStr = std::to_string(knight.damage);
+        damageStr += " per one hit";
+        playerDamage.setString(damageStr);
+        playerCostOfUpgrade.setString(std::to_string(knight.costOfUpgrade) + " coins to upgrade your sword");
 
-    window.draw(text);
-    window.draw(sprite);
-    window.draw(playerCoins);
-    window.draw(playerDamage);
-    window.draw(playerCostOfUpgrade);
-
-    // end the current frame
-    window.display();
-
-    n += 1;
-    if (n > 17)
-        n = 0;
-
-    if (mob_3.isNotAlive() == true) {
-        mob_1.levelUp();
-        mob_2.levelUp();
-        mob_3.levelUp();
-        cntMob = 0;
+        if (mob_3.isNotAlive() == true) {
+            bossIsNow.setString("BOSS");
+            window.draw(bossIsNow);
+            texture.loadFromFile(boss_1_sprites[n]);
+            sprite.setTexture(texture);
+            sprite.setPosition(100, 200);
+            // checking the clicking on mob
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                sf::Vector2i position = sf::Mouse::getPosition(window);
+                if (cursorPosition(position) == true) {
+                    boss_1.healthPoints -= knight.damage;
+                    std::string hpStr = std::to_string(boss_1.healthPoints);
+                    hpStr += " HP";
+                    text.setString(hpStr);
+                    if (boss_1.isNotAlive()) {
+                        knight.coins += boss_1.coins;
+                        std::string coinsStr = std::to_string(knight.coins);
+                        coinsStr += " Coins";
+                        playerCoins.setString(coinsStr);
+                        mob_1.levelUp();
+                        mob_2.levelUp();
+                        mob_3.levelUp();
+                        boss_1.levelUp();
+                        cntMob = 0;
+                    }
+                }
+                clock.getElapsedTime();
+                clock.restart();
+            }
         }
-    }
+        window.draw(text);
+        window.draw(sprite);
+        window.draw(playerCoins);
+        window.draw(playerDamage);
+        window.draw(playerCostOfUpgrade);
 
+        // end the current frame
+        window.display();
+
+        n += 1;
+        if (n > 17)
+            n = 0;
+
+        }
     return 0;
 }

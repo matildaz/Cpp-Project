@@ -26,7 +26,7 @@ std::vector<std::string> minotaur_3_stand = { "sprites/minotaur_3/Minotaur_03_Ta
     "sprites/minotaur_3/Minotaur_03_Taunt_014.png","sprites/minotaur_3/Minotaur_03_Taunt_015.png","sprites/minotaur_3/Minotaur_03_Taunt_016.png",
     "sprites/minotaur_3/Minotaur_03_Taunt_017.png" };
 
-std::vector<std::string> boss_1 = { "sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_000.png","sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_001.png",
+std::vector<std::string> boss_1_sprites = { "sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_000.png","sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_001.png",
     "sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_002.png","sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_003.png","sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_004.png",
     "sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_005.png","sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_006.png","sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_007.png",
     "sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_008.png","sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_009.png","sprites/Wraith_3/PNG Sequences/Taunt/Wraith_03_Taunt_010.png",
@@ -72,12 +72,20 @@ struct boss {
     std::vector<std::string> sprites;
 
     boss(std::vector<std::string> sprites) {
-        sprites = boss_1;
+        sprites = boss_1_sprites;
     }
 
     int levelUp() {
         healthPoints += 100;
         coins += 100;
+        return 0;
+    }
+
+    bool isNotAlive() {
+        if (healthPoints <= 0)
+            return true;
+        else
+            return false;
     }
 
 };
