@@ -27,6 +27,8 @@ int main()
     // create the window
     sf::RenderWindow window(sf::VideoMode(800, 1000), "My window");
 
+    bool block = false;
+
     // background
     sf::Texture background;
     background.loadFromFile("sprites/background/Group 6backgroundV1.png");
@@ -103,47 +105,136 @@ int main()
             // "close requested" event: we close the window
             if (event.type == sf::Event::Closed)
                 window.close();
+
+            if (event.type == sf::Event::MouseButtonPressed) {
+                if (!block) {
+                    block = true;
+                    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                        sf::Vector2i position = sf::Mouse::getPosition(window);
+                        if (cursorPositionUp(position) == true & knight.coins > knight.costOfUpgrade) {
+                            knight.coins -= knight.costOfUpgrade;
+                            knight.swordUpgrade();
+                            knight.costUpdate();
+                            std::string coinsStr = std::to_string(knight.coins);
+                            coinsStr += " Coins";
+                            playerCoins.setString(coinsStr);
+                        }
+                        if (mob_1.isNotAlive() == false) {
+                            if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                                sf::Vector2i position = sf::Mouse::getPosition(window);
+                                if (cursorPosition(position) == true) {
+                                    mob_1.healthPoints -= knight.damage;
+                                    std::string hpStr;
+                                    if (mob_1.healthPoints <= 0) {
+                                        hpStr = std::to_string(mob_2.healthPoints);
+                                    }
+                                    else {
+                                        hpStr = std::to_string(mob_1.healthPoints);
+                                    }
+                                    hpStr += " HP";
+                                    text.setString(hpStr);
+                                    if (mob_1.isNotAlive()) {
+                                        knight.coins += mob_1.coins;
+                                        std::string coinsStr = std::to_string(knight.coins);
+                                        coinsStr += " Coins";
+                                        playerCoins.setString(coinsStr);
+                                    }
+                                }
+                            }
+                        }
+                        else if (mob_2.isNotAlive() == false) {
+                            if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                                sf::Vector2i position = sf::Mouse::getPosition(window);
+                                if (cursorPosition(position) == true) {
+                                    mob_2.healthPoints -= knight.damage;
+                                    std::string hpStr;
+                                    if (mob_2.healthPoints <= 0) {
+                                        hpStr = std::to_string(mob_3.healthPoints);
+                                    }
+                                    else {
+                                        hpStr = std::to_string(mob_2.healthPoints);
+                                    }
+                                    hpStr += " HP";
+                                    text.setString(hpStr);
+                                    if (mob_2.isNotAlive()) {
+                                        knight.coins += mob_2.coins;
+                                        std::string coinsStr = std::to_string(knight.coins);
+                                        coinsStr += " Coins";
+                                        playerCoins.setString(coinsStr);
+                                    }
+                                }
+                            }
+                        }
+                        else if (mob_3.isNotAlive() == false) {
+                            if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                                sf::Vector2i position = sf::Mouse::getPosition(window);
+                                if (cursorPosition(position) == true) {
+                                    mob_3.healthPoints -= knight.damage;
+                                    std::string hpStr;
+                                    if (mob_3.healthPoints <= 0) {
+                                        hpStr = std::to_string(boss_1.healthPoints);
+                                    }
+                                    else {
+                                        hpStr = std::to_string(mob_3.healthPoints);
+                                    }
+                                    hpStr += " HP";
+                                    text.setString(hpStr);
+                                    if (mob_3.isNotAlive()) {
+                                        knight.coins += mob_3.coins;
+                                        std::string coinsStr = std::to_string(knight.coins);
+                                        coinsStr += " Coins";
+                                        playerCoins.setString(coinsStr);
+                                    }
+                                }
+                            }
+                        }
+
+                        if (mob_3.isNotAlive() == true) {
+                            if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                                sf::Vector2i position = sf::Mouse::getPosition(window);
+                                if (cursorPosition(position) == true) {
+                                    boss_1.healthPoints -= knight.damage;
+                                    std::string hpStr;
+                                    if (boss_1.healthPoints <= 0) {
+                                        hpStr = std::to_string(mob_1.healthPoints);
+                                    }
+                                    else {
+                                        hpStr = std::to_string(boss_1.healthPoints);
+                                    }
+                                    hpStr += " HP";
+                                    text.setString(hpStr);
+                                    if (boss_1.isNotAlive()) {
+                                        knight.coins += boss_1.coins;
+                                        std::string coinsStr = std::to_string(knight.coins);
+                                        coinsStr += " Coins";
+                                        playerCoins.setString(coinsStr);
+                                        mob_1.levelUp();
+                                        mob_2.levelUp();
+                                        mob_3.levelUp();
+                                        boss_1.levelUp();
+                                        cntMob = 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (event.type == sf::Event::MouseButtonReleased) {
+                block = false;
+            }
         }
 
         sf::Cursor cursor;
         if (cursor.loadFromSystem(sf::Cursor::Hand))
             window.setMouseCursor(cursor);
 
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-            sf::Vector2i position = sf::Mouse::getPosition(window);
-            if (cursorPositionUp(position) == true & knight.coins > knight.costOfUpgrade) {
-                knight.coins -= knight.costOfUpgrade;
-                knight.swordUpgrade();
-                knight.costUpdate();
-                std::string coinsStr = std::to_string(knight.coins);
-                coinsStr += " Coins";
-                playerCoins.setString(coinsStr);
-            }
-        }
-
         if (mob_1.isNotAlive() == false) {
             // upload the texture of mob
             texture.loadFromFile(minotaur_1_stand[n]);
             sprite.setTexture(texture);
             sprite.setPosition(0, 105);
-            // checking the clicking on mob
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-                sf::Vector2i position = sf::Mouse::getPosition(window);
-                if (cursorPosition(position) == true) {
-                    mob_1.healthPoints -= knight.damage;
-                    std::string hpStr = std::to_string(mob_1.healthPoints);
-                    hpStr += " HP";
-                    text.setString(hpStr);
-                    if (mob_1.isNotAlive()) {
-                        knight.coins += mob_1.coins;
-                        std::string coinsStr = std::to_string(knight.coins);
-                        coinsStr += " Coins";
-                        playerCoins.setString(coinsStr);
-                    }
-                }
-                clock.getElapsedTime();
-                clock.restart();
-            }
         }
         else if (mob_2.isNotAlive() == false) {
             // upload the texture of mob
@@ -151,23 +242,6 @@ int main()
             sprite.setTexture(texture);
             sprite.setPosition(0, 105);
             // checking the clicking on mob
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-                sf::Vector2i position = sf::Mouse::getPosition(window);
-                if (cursorPosition(position) == true) {
-                    mob_2.healthPoints -= knight.damage;
-                    std::string hpStr = std::to_string(mob_2.healthPoints);
-                    hpStr += " HP";
-                    text.setString(hpStr);
-                    if (mob_2.isNotAlive()) {
-                        knight.coins += mob_2.coins;
-                        std::string coinsStr = std::to_string(knight.coins);
-                        coinsStr += " Coins";
-                        playerCoins.setString(coinsStr);
-                    }
-                }
-                clock.getElapsedTime();
-                clock.restart();
-            }
         }
         else if (mob_3.isNotAlive() == false) {
             // upload the texture of mob
@@ -175,23 +249,6 @@ int main()
             sprite.setTexture(texture);
             sprite.setPosition(0, 105);
             // checking the clicking on mob
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-                sf::Vector2i position = sf::Mouse::getPosition(window);
-                if (cursorPosition(position) == true) {
-                    mob_3.healthPoints -= knight.damage;
-                    std::string hpStr = std::to_string(mob_3.healthPoints);
-                    hpStr += " HP";
-                    text.setString(hpStr);
-                    if (mob_3.isNotAlive()) {
-                        knight.coins += mob_3.coins;
-                        std::string coinsStr = std::to_string(knight.coins);
-                        coinsStr += " Coins";
-                        playerCoins.setString(coinsStr);
-                    }
-                }
-                clock.getElapsedTime();
-                clock.restart();
-            }
         }
 
         std::string damageStr = std::to_string(knight.damage);
@@ -206,28 +263,6 @@ int main()
             sprite.setTexture(texture);
             sprite.setPosition(100, 200);
             // checking the clicking on mob
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-                sf::Vector2i position = sf::Mouse::getPosition(window);
-                if (cursorPosition(position) == true) {
-                    boss_1.healthPoints -= knight.damage;
-                    std::string hpStr = std::to_string(boss_1.healthPoints);
-                    hpStr += " HP";
-                    text.setString(hpStr);
-                    if (boss_1.isNotAlive()) {
-                        knight.coins += boss_1.coins;
-                        std::string coinsStr = std::to_string(knight.coins);
-                        coinsStr += " Coins";
-                        playerCoins.setString(coinsStr);
-                        mob_1.levelUp();
-                        mob_2.levelUp();
-                        mob_3.levelUp();
-                        boss_1.levelUp();
-                        cntMob = 0;
-                    }
-                }
-                clock.getElapsedTime();
-                clock.restart();
-            }
         }
         window.draw(text);
         window.draw(sprite);
