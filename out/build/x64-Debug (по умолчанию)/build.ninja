@@ -51,6 +51,14 @@ build CMakeFiles\testlib.dir\the_game\theGame.cpp.obj: CXX_COMPILER__testlib_Deb
   TARGET_COMPILE_PDB = CMakeFiles\testlib.dir\
   TARGET_PDB = testlib.pdb
 
+build CMakeFiles\testlib.dir\the_game\theGame_tests.cpp.obj: CXX_COMPILER__testlib_Debug ..\..\..\the_game\theGame_tests.cpp || cmake_object_order_depends_target_testlib
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  INCLUDES = -IC:\Users\asis\Desktop\SFML-2.5.1\include
+  OBJECT_DIR = CMakeFiles\testlib.dir
+  OBJECT_FILE_DIR = CMakeFiles\testlib.dir\the_game
+  TARGET_COMPILE_PDB = CMakeFiles\testlib.dir\
+  TARGET_PDB = testlib.pdb
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target testlib
@@ -59,7 +67,7 @@ build CMakeFiles\testlib.dir\the_game\theGame.cpp.obj: CXX_COMPILER__testlib_Deb
 #############################################
 # Link the executable testlib.exe
 
-build testlib.exe: CXX_EXECUTABLE_LINKER__testlib_Debug CMakeFiles\testlib.dir\the_game\theGame.cpp.obj | C$:\Users\asis\Desktop\SFML-2.5.1\lib\sfml-graphics-d.lib C$:\Users\asis\Desktop\SFML-2.5.1\lib\sfml-window-d.lib C$:\Users\asis\Desktop\SFML-2.5.1\lib\sfml-system-d.lib
+build testlib.exe: CXX_EXECUTABLE_LINKER__testlib_Debug CMakeFiles\testlib.dir\the_game\theGame.cpp.obj CMakeFiles\testlib.dir\the_game\theGame_tests.cpp.obj | C$:\Users\asis\Desktop\SFML-2.5.1\lib\sfml-graphics-d.lib C$:\Users\asis\Desktop\SFML-2.5.1\lib\sfml-window-d.lib C$:\Users\asis\Desktop\SFML-2.5.1\lib\sfml-system-d.lib
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = C:\Users\asis\Desktop\SFML-2.5.1\lib\sfml-graphics-d.lib  C:\Users\asis\Desktop\SFML-2.5.1\lib\sfml-window-d.lib  C:\Users\asis\Desktop\SFML-2.5.1\lib\sfml-system-d.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib

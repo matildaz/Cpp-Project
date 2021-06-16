@@ -1,12 +1,10 @@
 # ninja log v5
 0	884	6445127180171944	CMakeFiles/testlib.dir/the_game/mobs.cpp.obj	626cdf5ae112bebd
-6	3183	6447158830489711	external/doctest/CMakeFiles/doctest.dir/doctest.cpp.obj	c915e56d664a49ce
-1025	1327	6454611232782690	testlib.exe	b54e5a73d933a7c8
-3183	3275	6447158831327484	external/doctest/doctest.lib	353e17e8ceac7478
+5	1765	6455347038624173	external/doctest/CMakeFiles/doctest.dir/doctest.cpp.obj	c915e56d664a49ce
+953	1180	6455366005290498	testlib.exe	e8949acaa9fb2eee
+5	111	6455359652519524	external/doctest/doctest.lib	353e17e8ceac7478
 0	53	0	clean	17f894ebe8a55879
-1	1024	6454611230219555	CMakeFiles/testlib.dir/the_game/theGame.cpp.obj	df0c3aacbab97114
-0	1130	6454947081599840	build.ninja	992457107e31b6ea
-1	779	6454957603558445	CMakeFiles/testlib.dir/the_game/theGame.cpp.obj	df0c3aacbab97114
-780	1093	6454957606041429	testlib.exe	b54e5a73d933a7c8
-1	985	6454983891840875	CMakeFiles/testlib.dir/the_game/theGame.cpp.obj	df0c3aacbab97114
-986	1241	6454983893775710	testlib.exe	b54e5a73d933a7c8
+1	952	6455366003365646	CMakeFiles/testlib.dir/the_game/theGame.cpp.obj	df0c3aacbab97114
+2	808	6455342935911636	doctest/src/doctest-stamp/doctest-mkdir	66aa147e579e299
+1	429	6455402499314094	build.ninja	992457107e31b6ea
+1	71	6455364783456575	CMakeFiles/testlib.dir/the_game/theGame_tests.cpp.obj	103ade0267f05f13

@@ -5,10 +5,12 @@ cmake_minimum_required (VERSION 3.8)
 
 project ("Cpp Project")
 
-set(SFML_DIR "C:/Users/asis/Desktop/SFML-2.5.1/lib/cmake/SFML")
+set(SFML_DIR "C:/Users/asis/Desktop/SFML-2.5.1/lib/cmake/SFML") # you have to change the direction
 
+enable_testing()
+add_subdirectory(external/doctest)
 find_package(SFML REQUIRED system window graphics network)
-add_executable(testlib "the_game/theGame.cpp")
+add_executable(testlib "the_game/theGame.cpp" "the_game/theGame_tests.cpp")
 target_link_libraries(testlib sfml-graphics sfml-window sfml-system)
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
@@ -20,10 +22,3 @@ target_compile_features(default INTERFACE cxx_std_17)
 
 include(cmake/CompilerWarnings.cmake)
 set_project_warnings(default)
-
-enable_testing()
-add_subdirectory(external/doctest)
-# Подключение библиотеки nana
-# add_subdirectory(nana EXCLUDE_FROM_ALL)
-# target_compile_definitions(nana PUBLIC NANA_ENABLE_PNG NANA_ENABLE_JPEG)
-# target_link_libraries(nana PUBLIC CONAN_PKG::libpng CONAN_PKG::libjpeg)

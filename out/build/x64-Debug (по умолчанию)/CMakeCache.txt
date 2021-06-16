@@ -220,6 +220,9 @@ Cpp Project_SOURCE_DIR:STATIC=C:/Users/asis/Desktop/Cpp Project
 // (LTO)
 ENABLE_IPO:BOOL=OFF
 
+//Git command line client
+GIT_EXECUTABLE:FILEPATH=C:/Program Files/Git/cmd/git.exe
+
 //Value Computed by CMake
 Group chat_BINARY_DIR:STATIC=C:/Users/asis/Desktop/Cpp Project/out/build/x64-Debug (по умолчанию)
 
@@ -231,6 +234,9 @@ Killing the Mobs_BINARY_DIR:STATIC=C:/Users/asis/Desktop/Cpp Project/out/build/x
 
 //Value Computed by CMake
 Killing the Mobs_SOURCE_DIR:STATIC=C:/Users/asis/Desktop/Cpp Project
+
+//The directory containing a CMake configuration file for SFML.
+SFML_DIR:PATH=SFML_DIR-NOTFOUND
 
 //Path to a file.
 SFML_DOC_DIR:PATH=SFML_DOC_DIR-NOTFOUND
@@ -381,4 +387,10 @@ CMAKE_STATIC_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Path to include folder for doctest
+DOCTEST_INCLUDE_DIR:INTERNAL=C:/Users/asis/Desktop/Cpp Project/out/build/x64-Debug (по умолчанию)/doctest/src/doctest/doctest
+//Details about finding Git
+FIND_PACKAGE_MESSAGE_DETAILS_Git:INTERNAL=[C:/Program Files/Git/cmd/git.exe][v2.30.0.windows.2()]
+//ADVANCED property for variable: GIT_EXECUTABLE
+GIT_EXECUTABLE-ADVANCED:INTERNAL=1
 
